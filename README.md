@@ -1,6 +1,6 @@
 # ErwinWijnveld headlesswp-nextjs-starter
 
-This is a starter for a headless WordPress starter using Next.js. It uses the WordPress WPGraphQL and ApolloClient to fetch data from WordPress and display it on the frontend.
+This is a starter for a headless WordPress site using Next.js. It uses the WordPress WPGraphQL and ApolloClient to fetch data from WordPress and display it on the frontend.
 
 ## Getting Started
 
@@ -55,6 +55,10 @@ NEXT_PUBLIC_FRONTEND_URL=
 # Only required if you want to enable preview mode
 # WORDPRESS_AUTH_REFRESH_TOKEN=
 # WORDPRESS_PREVIEW_SECRET=
+
+# Only required if you want to use google analytics
+# NEXT_PUBLIC_GOOGLE_ANALYTICS=
+
 ```
 
 ### Step 4. Run Next.js in development mode
@@ -140,10 +144,29 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 
 ## Todo
 
--   [ ] Standard pages routing + fetching
+-   [x] Typescript integration
+-   [x] Tailwind integration
+-   [x] posts archive index
+-   [x] Jetpack CDN support
+-   [x] Yoast SEO module
+-   [x] Google Analytics module
+-   [x] ACF flexible layout for standard posts
+-   [x] Prettier config and integration
+-   [x] Yarn use restricted mode
+-   [x] src routing
+-   [x] plugins preset
+-   [x] preview Posts
+-   [ ] preview Pages
+-   [ ] Wordpress standard pages routing + fetching
 -   [ ] Apollo client
 -   [ ] Header + footer acf presets
 -   [ ] Custom post type support + example
 -   [ ] WP Menu support
 -   [ ] Implement notifications hook
 -   [ ] GravityForms support
+-   [ ] Login and register pages
+-   [ ] Authenticated routes
+-   [ ] Woocommerce integration
+-   [ ] Plugins documentation Readme
+-   [ ] Eslint config and integration
+-   [ ] Husky config and integration

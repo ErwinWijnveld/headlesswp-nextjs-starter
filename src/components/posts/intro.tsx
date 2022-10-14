@@ -7,8 +7,7 @@ export default function Intro() {
                 Blog.
             </h1>
             <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
-                This is a starter for a headless WordPress starter using
-                Next.js.
+                This is a starter for a headless WordPress site using Next.js.
             </h4>
         </section>
     );
