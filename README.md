@@ -156,13 +156,14 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] src routing
 -   [x] plugins preset
 -   [x] preview Posts
+-   [x] Modal component
+-   [x] Implement notifications hook
 -   [ ] preview Pages
 -   [ ] Wordpress standard pages routing + fetching
 -   [ ] Apollo client
 -   [ ] Header + footer acf presets
 -   [ ] Custom post type support + example
 -   [ ] WP Menu support
--   [ ] Implement notifications hook
 -   [ ] GravityForms support
 -   [ ] Login and register pages
 -   [ ] Authenticated routes

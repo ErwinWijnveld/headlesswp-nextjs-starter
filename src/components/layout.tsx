@@ -14,9 +14,9 @@ export default function Layout({ preview, children, seo }: LayoutProps) {
     return (
         <>
             <Meta seo={seo} />
-            <div className="min-h-screen">
+            <div className="min-h-screen re">
                 <Alert preview={preview} />
-                <main>{children}</main>
+                <main className="relative z-[1]">{children}</main>
             </div>
             <Footer />
         </>

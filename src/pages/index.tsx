@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import { useState } from "react";
 import Layout from "../components/layout";
 import Container from "../components/posts/container";
 import HeroPost from "../components/posts/hero-post";
@@ -11,6 +12,7 @@ import { CMS_NAME } from "../lib/constants";
 export default function Index({ allPosts: { edges }, preview }) {
     const heroPost = edges[0]?.node;
     const morePosts = edges.slice(1);
+    const [modal, setModal] = useState(false);
 
     return (
         <Layout preview={preview}>

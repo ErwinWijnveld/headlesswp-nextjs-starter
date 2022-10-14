@@ -1,5 +1,8 @@
 import { AppProps } from "next/app";
 import Script from "next/script";
+import Notifications, {
+    NotificationContextProvider,
+} from "../hooks/useNotification";
 import "../styles/index.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -22,7 +25,10 @@ function MyApp({ Component, pageProps }: AppProps) {
                     </Script>
                 </>
             )}
-            <Component {...pageProps} />
+            <NotificationContextProvider>
+                <Notifications />
+                <Component {...pageProps} />
+            </NotificationContextProvider>
         </>
     );
 }
