@@ -158,9 +158,10 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] preview Posts
 -   [x] Modal component
 -   [x] Implement notifications hook
--   [ ] preview Pages
--   [ ] Wordpress standard pages routing + fetching
+-   [x] preview Pages
+-   [x] Wordpress standard pages routing + fetching
 -   [ ] Apollo client
+-   [ ] NPProgress loader
 -   [ ] Header + footer acf presets
 -   [ ] Custom post type support + example
 -   [ ] WP Menu support

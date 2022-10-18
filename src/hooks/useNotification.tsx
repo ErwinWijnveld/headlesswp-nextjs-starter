@@ -55,7 +55,7 @@ export default function Notifications() {
     useEffect(() => {
         setTimeout(() => {
             isShown && hideNotification();
-        }, 7500);
+        }, 5000);
     }, [isShown]);
 
     const animationDuration = 0.3;

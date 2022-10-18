@@ -34,6 +34,27 @@ export const flexibleQuery = (suffix) => `
     }
 `;
 
+export const flexibleQueryTemp = (suffix) => `
+    flexible {
+        fieldGroupName
+        flexContent {
+            ... on ${suffix}_Flexible_FlexContent_Spacer {
+                __typename
+                spacer {
+                    spacerAmount
+                }
+            }
+            ... on ${suffix}_Flexible_FlexContent_Wysiwyg {
+                __typename
+                wysiwyg {
+                    container
+                    text
+                }
+            }
+        }
+    }
+`;
+
 export const menuQuery = (name:string) =>  `
     menu(id: "${name}", idType: NAME) {
         menuItems {
