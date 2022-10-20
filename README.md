@@ -163,6 +163,7 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [ ] https://api.wordpress.org/secret-key/1.1/salt/ in docs
 -   [ ] Options page integration and context
 -   [ ] Apollo client
+-   [ ] Redirect naar admin url bij /wp-admin
 -   [ ] NPProgress loader
 -   [ ] Header + footer acf presets
 -   [ ] Custom post type support + example
