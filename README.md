@@ -160,6 +160,8 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] Implement notifications hook
 -   [x] preview Pages
 -   [x] Wordpress standard pages routing + fetching
+-   [ ] https://api.wordpress.org/secret-key/1.1/salt/ in docs
+-   [ ] Options page integration and context
 -   [ ] Apollo client
 -   [ ] NPProgress loader
 -   [ ] Header + footer acf presets
@@ -172,3 +174,5 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [ ] Plugins documentation Readme
 -   [ ] Eslint config and integration
 -   [ ] Husky config and integration
+
+-   [ ] https://github.com/kellenmace/wordpress-plugin-boilerplate Backend plugin setup
