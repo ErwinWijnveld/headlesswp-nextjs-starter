@@ -15,6 +15,16 @@ module.exports = {
       '2.gravatar.com',
       'secure.gravatar.com',
       'i0.wp.com',
+      'tailwindui.com',
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/wp-admin',
+        destination: process.env.WORDPRESS_API_URL.substr(0, process.env.WORDPRESS_API_URL.lastIndexOf("\\")) + '/wp-admin',
+        permanent: true,
+      },
+    ]
   },
 }

@@ -15,7 +15,7 @@ import Tags from "../../components/posts/tags";
 import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 import { CMS_NAME } from "../../lib/constants";
 
-export default function Post({ post, posts, preview }) {
+export default function Post({ post, posts, optionsMenu, preview }) {
     const router = useRouter();
     const morePosts = posts?.edges;
 
@@ -26,7 +26,7 @@ export default function Post({ post, posts, preview }) {
     console.log(post);
 
     return (
-        <Layout preview={preview} seo={post?.seo}>
+        <Layout preview={preview} seo={post?.seo} optionsMenu={optionsMenu}>
             <Container>
                 <Header />
                 {router.isFallback ? (
@@ -73,6 +73,7 @@ export const getStaticProps: GetStaticProps = async ({
             preview,
             post: data.post,
             posts: data.posts,
+            optionsMenu: data.optionsMenu,
         },
         revalidate: 10,
     };

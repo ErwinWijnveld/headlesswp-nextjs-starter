@@ -15,7 +15,7 @@ import Tags from "../components/posts/tags";
 import { getAllPagesWithSlug, getPageWithPreview } from "../lib/api";
 import { CMS_NAME } from "../lib/constants";
 
-export default function Page({ page, preview }) {
+export default function Page({ page, preview, optionsMenu }) {
     const router = useRouter();
 
     if (!router.isFallback && !page?.slug) {
@@ -25,7 +25,7 @@ export default function Page({ page, preview }) {
     console.log(page);
 
     return (
-        <Layout preview={preview}>
+        <Layout preview={preview} optionsMenu={optionsMenu}>
             <Flexible flexible={page?.flexible} />
         </Layout>
     );
@@ -38,12 +38,11 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
     const data = await getPageWithPreview(params?.slug, preview, previewData);
 
-    console.log(data);
-
     return {
         props: {
             preview,
             page: data.page,
+            optionsMenu: data.optionsMenu,
         },
         revalidate: 10,
     };

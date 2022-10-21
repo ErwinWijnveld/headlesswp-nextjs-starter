@@ -8,12 +8,12 @@ import MoreStories from "../../components/posts/more-stories";
 import { getAllPostsForHome } from "../../lib/api";
 import { CMS_NAME } from "../../lib/constants";
 
-export default function Index({ allPosts: { edges }, preview }) {
+export default function Index({ allPosts: { edges }, preview, optionsMenu }) {
     const heroPost = edges[0]?.node;
     const morePosts = edges.slice(1);
 
     return (
-        <Layout preview={preview}>
+        <Layout preview={preview} optionsMenu={optionsMenu}>
             <Head>
                 <title>Posts</title>
             </Head>
@@ -36,10 +36,13 @@ export default function Index({ allPosts: { edges }, preview }) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-    const allPosts = await getAllPostsForHome(preview);
+    const data = await getAllPostsForHome(preview);
+
+    const allPosts = data?.posts;
+    const { optionsMenu } = data;
 
     return {
-        props: { allPosts, preview },
+        props: { allPosts, optionsMenu, preview },
         revalidate: 10,
     };
 };

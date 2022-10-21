@@ -1,24 +1,33 @@
+import { OptionsContextProvider } from "../hooks/useOptions";
+import Footer from "./Footer";
+import Header from "./Header";
 import Alert from "./posts/alert";
-import Footer from "./posts/footer";
 import Meta from "./posts/meta";
 
 interface LayoutProps {
     preview?: boolean;
     children: React.ReactNode;
+    optionsMenu?: any;
     seo?: {
         fullHead: string;
     };
 }
 
-export default function Layout({ preview, children, seo }: LayoutProps) {
+export default function Layout({
+    preview,
+    children,
+    seo,
+    optionsMenu,
+}: LayoutProps) {
     return (
-        <>
+        <OptionsContextProvider value={optionsMenu?.optionsMenu}>
             <Meta seo={seo} />
-            <div className="min-h-screen re">
+            <Header />
+            <div className="min-h-screen">
                 <Alert preview={preview} />
                 <main className="relative z-[1]">{children}</main>
             </div>
             <Footer />
-        </>
+        </OptionsContextProvider>
     );
 }

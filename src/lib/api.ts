@@ -1,33 +1,24 @@
-import { flexibleQuery, flexibleQueryTemp, yoastQuery } from "./queries"
+import { standardGlobalQueries, standardPostQueries } from "./queries";
 
-const API_URL = process.env.WORDPRESS_API_URL
+import { gql } from "@apollo/client";
+import { client } from "./apollo";
 
 async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
-  const headers = { 'Content-Type': 'application/json' }
-
-  if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
-    headers[
-      'Authorization'
-    ] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`
-  }
-
-  // WPGraphQL Plugin must be enabled
-  const res = await fetch(API_URL, {
-    headers,
-    method: 'POST',
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  })
-
-  const json = await res.json()
-  if (json.errors) {
-    console.error(json.errors)
-    throw new Error('Failed to fetch API')
-  }
-  return json.data
+  const {data} = await client.query({
+		query: gql(query),
+    variables,
+	});
+  return data
 }
+
+async function mutateAPI(mutation = '', { variables }: Record<string, any> = {}) {
+  const res = await client.mutate({
+		mutation: gql(mutation),
+    variables,
+	});
+  return res
+}
+
 
 export async function getPreviewPost(id, idType = 'DATABASE_ID') {
   const data = await fetchAPI(
@@ -122,6 +113,7 @@ export async function getAllPostsForHome(preview) {
           }
         }
       }
+      ${standardGlobalQueries()}
     }
   `,
     {
@@ -132,7 +124,7 @@ export async function getAllPostsForHome(preview) {
     }
   )
 
-  return data?.posts
+  return data
 }
 
 export async function getPostAndMorePosts(slug, preview, previewData) {
@@ -144,7 +136,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
     : slug === postPreview.slug
   const isDraft = isSamePost && postPreview?.status === 'draft'
   const isRevision = isSamePost && postPreview?.status === 'publish'
-  const data = await fetchAPI(
+  let data = await fetchAPI(
     `
     fragment AuthorFields on User {
       name
@@ -155,8 +147,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       }
     }
     fragment PostFields on Post {
-      ${yoastQuery}
-      ${flexibleQuery('Post')}
+      ${standardPostQueries('Post')}
       title
       excerpt
       slug
@@ -219,6 +210,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
           }
         }
       }
+      ${standardGlobalQueries()}
     }
   `,
     {
@@ -240,9 +232,10 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
   }
 
   // Filter out the main post
-  data.posts.edges = data.posts.edges.filter(({ node }) => node.slug !== slug)
+  data.posts.edges = data?.posts?.edges.filter(({ node }) => node.slug !== slug)
+
   // If there are still 3 posts, remove the last one
-  if (data.posts.edges.length > 2) data.posts.edges.pop()
+  if (data.posts?.edges?.length > 2) data.posts.edges.pop()
 
   return data
 }
@@ -270,7 +263,7 @@ export async function getPageWithPreview(
       title
       slug
       date
-      ${flexibleQueryTemp('Page')}
+      ${standardPostQueries('Page')}
     }
     query PageBySlug($id: ID!, $idType: PageIdType!) {
       page(id: $id, idType: $idType) {
@@ -293,6 +286,7 @@ export async function getPageWithPreview(
             : ''
         }
       }
+      ${standardGlobalQueries()}
     }
   `,
     {

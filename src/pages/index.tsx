@@ -1,55 +1,53 @@
 import { GetStaticProps } from "next";
+import ErrorPage from "next/error";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import Flexible from "../components/Flexible";
+import Hero from "../components/Hero";
 import Layout from "../components/layout";
 import Container from "../components/posts/container";
 import HeroPost from "../components/posts/hero-post";
 import Intro from "../components/posts/intro";
 import MoreStories from "../components/posts/more-stories";
-import { getAllPostsForHome } from "../lib/api";
+import { getAllPostsForHome, getPageWithPreview } from "../lib/api";
 import { CMS_NAME } from "../lib/constants";
 
-export default function Index({ allPosts: { edges }, preview }) {
-    const SAMPLE_DATA = [
-        {
-            title: "Posts",
-            description: "Posts",
-            uri: "/posts",
-        },
-        {
-            title: "Sample page",
-            description: "Sample page",
-            uri: "/sample-page",
-        },
-    ];
-    return (
-        <Layout preview={preview}>
-            <Head>
-                <title>HeadlessWP/Next.js starter</title>
-            </Head>
-            <Container>
-                <Intro />
+export default function Index({ page, optionsMenu, preview }) {
+    const router = useRouter();
 
-                <ul className="lis list-decimal text-5xl font-bold pl-10">
-                    {SAMPLE_DATA.map((item, index) => (
-                        <li key={index}>
-                            <Link href={item.uri}>
-                                <a>{item.title}</a>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            </Container>
+    if (!router.isFallback && !page?.slug) {
+        return (
+            <h1 className="flex min-h-screen bg-black items-center justify-center text-center text-white px-[20vw]">
+                In your backend, create a page with the slug "home" and publish
+                it. Then select A static page (select below) and choose "Home"
+                from the dropdown.
+            </h1>
+        );
+        // return <ErrorPage statusCode={404} />;
+    }
+
+    return (
+        <Layout preview={preview} optionsMenu={optionsMenu}>
+            <Flexible flexible={page?.flexiblePage} />
         </Layout>
     );
 }
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-    const allPosts = "await getAllPostsForHome(preview)";
+export const getStaticProps: GetStaticProps = async ({
+    params,
+    preview = false,
+    previewData,
+}) => {
+    const data = await getPageWithPreview("/", preview, previewData);
 
     return {
-        props: { allPosts, preview },
+        props: {
+            preview,
+            page: data.page,
+            optionsMenu: data.optionsMenu,
+        },
         revalidate: 10,
     };
 };

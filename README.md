@@ -78,12 +78,9 @@ To add [authentication to WPGraphQL](https://docs.wpgraphql.com/guides/authentic
 
 > Adding the WPGraphQL JWT plugin will disable your GraphQL API until you add a JWT secret ([GitHub issue](https://github.com/wp-graphql/wp-graphql-jwt-authentication/issues/91)).
 
-Once that's done, you'll need to access the WordPress filesystem to add the secret required to validate JWT tokens. We recommend using SFTP — the instructions vary depending on your hosting provider. For example:
+Once that's done, you'll need to access the WordPress filesystem to add the secret required to validate JWT tokens. I recommend using SFTP — the instructions vary depending on your hosting provider. For example:
 
--   [SFTP guide for WP Engine](https://wpengine.com/support/sftp/)
--   [SFTP guide for WordPress.com](https://wordpress.com/support/sftp/)
-
-Once you have SFTP access, open `wp-config.php` and add a secret for your JWT:
+Once you have SFTP access, [generate your token](https://api.wordpress.org/secret-key/1.1/salt/) and open `wp-config.php` and add a secret for your JWT:
 
 ```php
 define( 'GRAPHQL_JWT_AUTH_SECRET_KEY', 'YOUR_STRONG_SECRET' );
@@ -117,9 +114,15 @@ Your `.env.local` file should look like this:
 ```bash
 WORDPRESS_API_URL=...
 
+NEXT_PUBLIC_WORDPRESS_URL=
+NEXT_PUBLIC_FRONTEND_URL=
+
 # Only required if you want to enable preview mode
-WORDPRESS_AUTH_REFRESH_TOKEN=...
-WORDPRESS_PREVIEW_SECRET=...
+WORDPRESS_AUTH_REFRESH_TOKEN=
+WORDPRESS_PREVIEW_SECRET=
+
+# Only required if you want to use google analytics
+NEXT_PUBLIC_GOOGLE_ANALYTICS=
 ```
 
 **Important:** Restart your Next.js server to update the environment variables.
@@ -160,14 +163,16 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] Implement notifications hook
 -   [x] preview Pages
 -   [x] Wordpress standard pages routing + fetching
--   [ ] https://api.wordpress.org/secret-key/1.1/salt/ in docs
--   [ ] Options page integration and context
+-   [x] Redirect wp-admin to admin
+-   [x] Options page integration and context
+-   [ ] Header + footer acf presets
+-   [ ] Standard header search bar integration
 -   [ ] Apollo client
 -   [ ] Redirect naar admin url bij /wp-admin
 -   [ ] NPProgress loader
--   [ ] Header + footer acf presets
 -   [ ] Custom post type support + example
 -   [ ] WP Menu support
+-   [ ] https://api.wordpress.org/secret-key/1.1/salt/ in docs
 -   [ ] GravityForms support
 -   [ ] Login and register pages
 -   [ ] Authenticated routes
@@ -176,4 +181,4 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [ ] Eslint config and integration
 -   [ ] Husky config and integration
 
--   [ ] https://github.com/kellenmace/wordpress-plugin-boilerplate Backend plugin setup
+-   [x] https://github.com/ErwinWijnveld/headlesswp-plugin-starter Backend plugin setup
