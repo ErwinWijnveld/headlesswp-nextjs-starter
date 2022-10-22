@@ -17,7 +17,7 @@ export default function Index({ allPosts: { edges }, preview, optionsMenu }) {
             <Head>
                 <title>Posts</title>
             </Head>
-            <Container>
+            <div className="py-12 container">
                 <Intro />
                 {heroPost && (
                     <HeroPost
@@ -30,7 +30,7 @@ export default function Index({ allPosts: { edges }, preview, optionsMenu }) {
                     />
                 )}
                 {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-            </Container>
+            </div>
         </Layout>
     );
 }

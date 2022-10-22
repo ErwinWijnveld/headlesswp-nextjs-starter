@@ -22,10 +22,11 @@ export default function Page({ page, preview, optionsMenu }) {
         return <ErrorPage statusCode={404} />;
     }
 
-    console.log(page);
-
     return (
         <Layout preview={preview} optionsMenu={optionsMenu}>
+            <h1 className="container py-12 font-bold text-6xl">
+                {page?.title}
+            </h1>
             <Flexible flexible={page?.flexible} />
         </Layout>
     );

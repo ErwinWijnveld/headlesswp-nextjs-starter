@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../public/logo.svg";
+import logo from "../assets/images/logo.svg";
 import { useOptions } from "../hooks/useOptions";
 
 const navigation = {
@@ -95,7 +95,8 @@ const navigation = {
 
 export default function Footer() {
     // Footer fields
-    const { footer } = useOptions();
+    const options = useOptions();
+    const footer = options?.footer;
 
     return (
         <footer className="bg-indigo-500" aria-labelledby="footer-heading">

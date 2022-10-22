@@ -9,8 +9,6 @@ interface FlexibleProps {
 const Flexible = ({ flexible }: FlexibleProps) => {
     let partials = [];
 
-    console.log(flexible);
-
     flexible?.flexContent.map((flex: any, index: number) => {
         const partialName = flex?.__typename
             ? getPartialName(flex.__typename)

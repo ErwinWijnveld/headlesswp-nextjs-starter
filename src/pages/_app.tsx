@@ -1,9 +1,9 @@
 import { AppProps } from "next/app";
 import Script from "next/script";
+import "../assets/styles/index.css";
 import Notifications, {
     NotificationContextProvider,
 } from "../hooks/useNotification";
-import "../styles/index.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (

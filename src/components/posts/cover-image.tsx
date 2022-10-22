@@ -1,6 +1,7 @@
 import cn from "classnames";
 import Image from "next/image";
 import Link from "next/link";
+import placeholder from "../../assets/images/placeholder.png";
 
 interface Props {
     title: string;
@@ -18,7 +19,7 @@ export default function CoverImage({ title, coverImage, slug }: Props) {
             width={2000}
             height={1000}
             alt={`Cover Image for ${title}`}
-            src={coverImage?.node.sourceUrl}
+            src={coverImage?.node.sourceUrl || placeholder}
             objectFit="cover"
             className={cn("shadow-small", {
                 "hover:shadow-medium transition-shadow duration-200": slug,

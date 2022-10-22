@@ -165,6 +165,7 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] Wordpress standard pages routing + fetching
 -   [x] Redirect wp-admin to admin
 -   [x] Options page integration and context
+-   [ ] Homepage explanation component (TODO: preview privacy policy page)
 -   [ ] Header + footer acf presets
 -   [ ] Standard header search bar integration
 -   [ ] Apollo client

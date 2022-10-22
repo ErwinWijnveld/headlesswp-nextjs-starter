@@ -1,7 +1,7 @@
 
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 
-const API_URL = process.env?.WORDPRESS_API_URL ? process.env?.WORDPRESS_API_URL : process.env?.NEXT_PUBLIC_WORDPRESS_URL 
+const API_URL = process.env?.WORDPRESS_API_URL ? process.env?.WORDPRESS_API_URL : process.env?.NEXT_PUBLIC_WORDPRESS_URL;
 
 const headers = { 
     'Content-Type': 'application/json',

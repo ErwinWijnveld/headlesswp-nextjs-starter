@@ -136,7 +136,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
     : slug === postPreview.slug
   const isDraft = isSamePost && postPreview?.status === 'draft'
   const isRevision = isSamePost && postPreview?.status === 'publish'
-  let data = await fetchAPI(
+  const data = await fetchAPI(
     `
     fragment AuthorFields on User {
       name
@@ -231,12 +231,6 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
     delete data.post.revisions
   }
 
-  // Filter out the main post
-  data.posts.edges = data?.posts?.edges.filter(({ node }) => node.slug !== slug)
-
-  // If there are still 3 posts, remove the last one
-  if (data.posts?.edges?.length > 2) data.posts.edges.pop()
-
   return data
 }
 
@@ -305,7 +299,7 @@ export async function getPageWithPreview(
     const revision = data.page.revisions.edges[0]?.node
 
     if (revision) Object.assign(data.page, revision)
-    delete data.page.revisions
+    // delete data.page.revisions
   }
 
 

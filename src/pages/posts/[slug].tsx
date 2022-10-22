@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import Flexible from "../../components/Flexible";
 import Layout from "../../components/layout";
 import Container from "../../components/posts/container";
-import Header from "../../components/posts/header";
 import MoreStories from "../../components/posts/more-stories";
 import PostBody from "../../components/posts/post-body";
 import PostHeader from "../../components/posts/post-header";
@@ -15,20 +14,16 @@ import Tags from "../../components/posts/tags";
 import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 import { CMS_NAME } from "../../lib/constants";
 
-export default function Post({ post, posts, optionsMenu, preview }) {
+export default function Post({ post, morePosts, optionsMenu, preview }) {
     const router = useRouter();
-    const morePosts = posts?.edges;
 
     if (!router.isFallback && !post?.slug) {
         return <ErrorPage statusCode={404} />;
     }
 
-    console.log(post);
-
     return (
         <Layout preview={preview} seo={post?.seo} optionsMenu={optionsMenu}>
-            <Container>
-                <Header />
+            <div className="container py-24">
                 {router.isFallback ? (
                     <PostTitle>Loading…</PostTitle>
                 ) : (
@@ -56,7 +51,7 @@ export default function Post({ post, posts, optionsMenu, preview }) {
                         )}
                     </>
                 )}
-            </Container>
+            </div>
         </Layout>
     );
 }
@@ -68,11 +63,19 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
     const data = await getPostAndMorePosts(params?.slug, preview, previewData);
 
+    // Filter out the main post
+    let morePosts = data?.posts?.edges.filter(
+        ({ node }) => node.slug !== params?.slug
+    );
+
+    // If there are still 3 posts, remove the last one
+    if (morePosts?.edges?.length > 2) morePosts.edges.pop();
+
     return {
         props: {
             preview,
             post: data.post,
-            posts: data.posts,
+            morePosts: morePosts,
             optionsMenu: data.optionsMenu,
         },
         revalidate: 10,

@@ -20,8 +20,6 @@ export default async function preview(
   // Fetch WordPress to check if the provided `id` or `slug` exists
   const page = await getPreviewPage(id || slug, id ? 'DATABASE_ID' : 'URI')
 
-  console.log('page', page)
-
   // If the page doesn't exist prevent preview mode from being enabled
   if (!page) {
     return res.status(401).json({ message: 'Post not found' })

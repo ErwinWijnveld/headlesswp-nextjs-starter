@@ -50,8 +50,6 @@ export function useNotification() {
 export default function Notifications() {
     const { isShown, hideNotification, notification } = useNotification();
 
-    console.log("notification", notification);
-
     useEffect(() => {
         setTimeout(() => {
             isShown && hideNotification();

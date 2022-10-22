@@ -4,7 +4,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useState } from "react";
-import logo from "../../public/logo.svg";
+import logo from "../assets/images/logo.svg";
 import { useOptions } from "../hooks/useOptions";
 
 /**
@@ -80,7 +80,8 @@ function classNames(...classes) {
 export default function Header() {
     const [selected, setSelected] = useState(settings[0]);
 
-    const { header } = useOptions();
+    const options = useOptions();
+    const header = options?.header;
 
     const mainNavigation = header?.menuItems ?? navigation;
 
