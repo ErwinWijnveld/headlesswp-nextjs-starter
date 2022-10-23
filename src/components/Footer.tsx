@@ -99,7 +99,7 @@ export default function Footer() {
     const footer = options?.footer;
 
     return (
-        <footer className="bg-indigo-500" aria-labelledby="footer-heading">
+        <footer className="bg-slate-900" aria-labelledby="footer-heading">
             <h2 id="footer-heading" className="sr-only">
                 Footer
             </h2>
@@ -129,7 +129,7 @@ export default function Footer() {
                                         <li key={item.name}>
                                             <a
                                                 href={item.href}
-                                                className="text-base text-indigo-200 hover:text-white"
+                                                className="text-base text-slate-200 hover:text-white"
                                             >
                                                 {item.name}
                                             </a>
@@ -146,7 +146,7 @@ export default function Footer() {
                                         <li key={item.name}>
                                             <a
                                                 href={item.href}
-                                                className="text-base text-indigo-200 hover:text-white"
+                                                className="text-base text-slate-200 hover:text-white"
                                             >
                                                 {item.name}
                                             </a>
@@ -165,7 +165,7 @@ export default function Footer() {
                                         <li key={item.name}>
                                             <a
                                                 href={item.href}
-                                                className="text-base text-indigo-200 hover:text-white"
+                                                className="text-base text-slate-200 hover:text-white"
                                             >
                                                 {item.name}
                                             </a>
@@ -182,7 +182,7 @@ export default function Footer() {
                                         <li key={item.name}>
                                             <a
                                                 href={item.href}
-                                                className="text-base text-indigo-200 hover:text-white"
+                                                className="text-base text-slate-200 hover:text-white"
                                             >
                                                 {item.name}
                                             </a>
@@ -193,13 +193,13 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className="mt-8 border-t border-indigo-700 pt-8 md:flex md:items-center md:justify-between">
+                <div className="mt-8 border-t border-slate-700 pt-8 md:flex md:items-center md:justify-between">
                     <div className="flex space-x-6 md:order-2">
                         {navigation.social.map((item) => (
                             <a
                                 key={item.name}
                                 href={item.href}
-                                className="text-indigo-100 hover:text-indigo-100"
+                                className="text-slate-100 hover:text-slate-100"
                             >
                                 <span className="sr-only">{item.name}</span>
                                 <item.icon
@@ -209,7 +209,7 @@ export default function Footer() {
                             </a>
                         ))}
                     </div>
-                    <p className="mt-8 text-base text-indigo-100 md:order-1 md:mt-0">
+                    <p className="mt-8 text-base text-slate-100 md:order-1 md:mt-0">
                         &copy; 2022 Erwin Wijnveld, Inc. All rights reserved.
                     </p>
                 </div>

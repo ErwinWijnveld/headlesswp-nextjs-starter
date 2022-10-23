@@ -24,9 +24,15 @@ export default function Page({ page, preview, optionsMenu }) {
 
     return (
         <Layout preview={preview} optionsMenu={optionsMenu}>
-            <h1 className="container py-12 font-bold text-6xl">
-                {page?.title}
-            </h1>
+            <div className="container max-w-5xl py-12">
+                <h1 className=" font-bold text-6xl mb-8">{page?.title}</h1>
+                {page?.content && (
+                    <div
+                        className="content"
+                        dangerouslySetInnerHTML={{ __html: page?.content }}
+                    />
+                )}
+            </div>
             <Flexible flexible={page?.flexible} />
         </Layout>
     );

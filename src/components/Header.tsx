@@ -87,7 +87,7 @@ export default function Header() {
 
     return (
         <>
-            <Disclosure as="nav" className="bg-indigo-500" aria-label="Global">
+            <Disclosure as="nav" className="bg-slate-900" aria-label="Global">
                 {({ open }) => (
                     <>
                         <div className="container">
@@ -118,7 +118,7 @@ export default function Header() {
                                                 target={item?.link?.target}
                                                 key={index}
                                             >
-                                                <a className="rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-indigo-400">
+                                                <a className="rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-slate-700">
                                                     {item?.link?.title}
                                                 </a>
                                             </Link>
@@ -143,7 +143,7 @@ export default function Header() {
                                             <input
                                                 id="search"
                                                 name="search"
-                                                className="block w-full rounded-md border-transparent bg-indigo-400 py-2 pl-10 pr-3 text-base leading-5 placeholder-white focus:border-white focus:bg-white focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm"
+                                                className="block w-full rounded-md border-transparent bg-slate-700 py-2 pl-10 pr-3 text-base leading-5 placeholder-white focus:border-white focus:bg-white focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm"
                                                 placeholder="Search"
                                                 type="search"
                                             />
@@ -152,7 +152,7 @@ export default function Header() {
                                 </div>
                                 <div className="flex items-center lg:hidden">
                                     {/* Mobile menu button */}
-                                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-indigo-200 hover:bg-indigo-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-slate-200 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                                         <span className="sr-only">
                                             Open menu
                                         </span>
@@ -174,7 +174,7 @@ export default function Header() {
                                 {/* <div className="hidden lg:ml-4 lg:flex lg:items-center">
                                     <button
                                         type="button"
-                                        className="flex-shrink-0 rounded-full bg-indigo-500 p-1 text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-500"
+                                        className="flex-shrink-0 rounded-full bg-slate-900 p-1 text-slate-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-900"
                                     >
                                         <span className="sr-only">
                                             Notificaitons
@@ -190,7 +190,7 @@ export default function Header() {
                                         className="relative ml-4 flex-shrink-0"
                                     >
                                         <div>
-                                            <Menu.Button className="flex rounded-full bg-indigo-500 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-500">
+                                            <Menu.Button className="flex rounded-full bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-900">
                                                 <span className="sr-only">
                                                     Open user menu
                                                 </span>
@@ -243,7 +243,7 @@ export default function Header() {
                                         target={item?.link?.target}
                                         key={index}
                                     >
-                                        <Disclosure.Button className="block rounded-md py-2 px-3 text-base font-medium text-white hover:bg-indigo-400 hover:text-white">
+                                        <Disclosure.Button className="block rounded-md py-2 px-3 text-base font-medium text-white hover:bg-slate-700 hover:text-white">
                                             {item?.link?.title}
                                         </Disclosure.Button>
                                     </Link>
@@ -252,7 +252,7 @@ export default function Header() {
 
                             {/* Profile */}
 
-                            {/* <div className="border-t border-indigo-500 pt-4 pb-3">
+                            {/* <div className="border-t border-slate-900 pt-4 pb-3">
                                 <div className="flex items-center px-4">
                                     <div className="flex-shrink-0">
                                         <img
@@ -265,13 +265,13 @@ export default function Header() {
                                         <div className="text-base font-medium text-white">
                                             {user.name}
                                         </div>
-                                        <div className="text-sm font-medium text-indigo-200">
+                                        <div className="text-sm font-medium text-slate-200">
                                             {user.email}
                                         </div>
                                     </div>
                                     <button
                                         type="button"
-                                        className="ml-auto flex-shrink-0 rounded-full bg-indigo-500 p-1 text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-500"
+                                        className="ml-auto flex-shrink-0 rounded-full bg-slate-900 p-1 text-slate-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-900"
                                     >
                                         <span className="sr-only">
                                             View notifications
@@ -288,7 +288,7 @@ export default function Header() {
                                             key={item.name}
                                             as="a"
                                             href={item.href}
-                                            className="block rounded-md py-2 px-3 text-base font-medium text-indigo-200 hover:bg-indigo-400 hover:text-white"
+                                            className="block rounded-md py-2 px-3 text-base font-medium text-slate-200 hover:bg-slate-700 hover:text-white"
                                         >
                                             {item.name}
                                         </Disclosure.Button>

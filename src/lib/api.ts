@@ -8,7 +8,8 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
 		query: gql(query),
     variables,
 	});
-  return data
+  // make immutable object data writeable
+  return JSON.parse(JSON.stringify(data))
 }
 
 async function mutateAPI(mutation = '', { variables }: Record<string, any> = {}) {
@@ -299,7 +300,7 @@ export async function getPageWithPreview(
     const revision = data.page.revisions.edges[0]?.node
 
     if (revision) Object.assign(data.page, revision)
-    // delete data.page.revisions
+    delete data.page.revisions
   }
 
 

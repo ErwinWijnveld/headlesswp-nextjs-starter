@@ -12,6 +12,15 @@
 @tailwind utilities;
 /* Stop purging. */
 
+/* Progress bar */
+
+@import 'nprogress/nprogress.css';
+
+#nprogress .bar {
+  @apply bg-slate-500;
+  height: 3px;
+}
+
 /* Your own custom utilities */
 
 .has-text-align-left {

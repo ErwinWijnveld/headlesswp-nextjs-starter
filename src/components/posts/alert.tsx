@@ -7,7 +7,7 @@ export default function Alert({ preview }) {
     return (
         <div
             className={cn("border-b", {
-                "bg-accent-7 border-accent-7 text-white": preview,
+                "bg-accent-7 border-accent-7 text-slate-800": preview,
                 "bg-accent-1 border-accent-2": !preview,
             })}
         >
@@ -17,7 +17,7 @@ export default function Alert({ preview }) {
                         This is a page preview.{" "}
                         <a
                             href="/api/exit-preview"
-                            className="underline hover:text-cyan duration-200 transition-colors"
+                            className="underline hover:text-slate-400 duration-200 transition-colors"
                         >
                             Click here
                         </a>{" "}

@@ -33,17 +33,15 @@ import {
     NewspaperIcon,
     PencilSquareIcon,
     ReceiptRefundIcon,
-    UsersIcon
+    UsersIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
-
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
 }
 
-export default function HomepageNav({isPage}) {
-
+export default function HomepageNav({ isPage }) {
     const actions = [
         {
             title: "Homepage",
@@ -71,7 +69,7 @@ export default function HomepageNav({isPage}) {
         },
         {
             title: "Hello World!",
-            href: "#",
+            href: "/posts/hello-world",
             icon: NewspaperIcon,
             iconForeground: "text-fuchsia-700",
             iconBackground: "bg-fuchsia-100",
@@ -87,7 +85,7 @@ export default function HomepageNav({isPage}) {
         },
         {
             title: "Preview drafts",
-            href: `/api/preview-page?secret=HeadlessPreviewSecret&id=3`,
+            href: `/api/preview-page?secret=HeadlessPreviewSecret&slug=privacy-policy`,
             icon: PencilSquareIcon,
             iconForeground: "text-purple-700",
             iconBackground: "bg-purple-100",
@@ -97,19 +95,28 @@ export default function HomepageNav({isPage}) {
     return (
         <div className=" overflow-hidden rounded-lg bg-gray-200 min-h-screen flex items-center py-12">
             <div className="sm:grid sm:grid-cols-2 sm:gap-px container">
-                {!isPage && <div
-                    className={classNames(
-                        "relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 col-span-2 rounded-tl-lg rounded-tr-lg sm:rounded-tr-none sm:rounded-tr-lg"
-                    )}
-                >
-                    <h1 className="text-sm text-gray-500 text-center max-w-3xl mx-auto">You haven't added a Homepage, In your backend, go to pages and create a page with the slug "home" and publish it. Go to Settings -> select A static page and choose "Home" from the dropdown.</h1>
-                </div>}
+                {!isPage && (
+                    <div
+                        className={classNames(
+                            "relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 col-span-2 rounded-tl-lg rounded-tr-lg sm:rounded-tr-none sm:rounded-tr-lg"
+                        )}
+                    >
+                        <h1 className="text-sm text-gray-500 text-center max-w-3xl mx-auto mb-0">
+                            You haven't added a Homepage, In your backend, go to
+                            pages and create a page with the slug "home" and
+                            publish it. Go to Settings {`${"->"}`} select A
+                            static page and choose "Home" from the dropdown.
+                        </h1>
+                    </div>
+                )}
                 {actions.map((action, actionIdx) => (
                     <div
                         key={action.title}
                         className={classNames(
-                            (actionIdx === 0 && isPage) ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none' : '',
-                            (actionIdx === 1 && isPage) ? 'sm:rounded-tr-lg' : '',
+                            actionIdx === 0 && isPage
+                                ? "rounded-tl-lg rounded-tr-lg sm:rounded-tr-none"
+                                : "",
+                            actionIdx === 1 && isPage ? "sm:rounded-tr-lg" : "",
                             actionIdx === actions.length - 2
                                 ? "sm:rounded-bl-lg"
                                 : "",
