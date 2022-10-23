@@ -3,7 +3,7 @@ import ErrorPage from "next/error";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Flexible from "../components/Flexible";
 import Hero from "../components/Hero";
 import Layout from "../components/layout";
@@ -12,11 +12,28 @@ import HeroPost from "../components/posts/hero-post";
 import Intro from "../components/posts/intro";
 import MoreStories from "../components/posts/more-stories";
 import HomepageNav from "../components/presets/HomepageNav";
+import { useNotification } from "../hooks/useNotification";
 import { getAllPostsForHome, getPageWithPreview } from "../lib/api";
 import { CMS_NAME } from "../lib/constants";
 
 export default function Index({ page, optionsMenu, preview }) {
     const router = useRouter();
+    const { showNotification } = useNotification();
+
+    useEffect(() => {
+        if (!router.isFallback && !page?.slug) {
+            showNotification({
+                message: "Please create a homepage.",
+                type: "error",
+            });
+            return;
+        }
+        showNotification({
+            message: "Homepage linked successfully!",
+            type: "success",
+        });
+        return;
+    }, []);
 
     if (!router.isFallback && !page?.slug) {
         return <HomepageNav isPage={false} />;

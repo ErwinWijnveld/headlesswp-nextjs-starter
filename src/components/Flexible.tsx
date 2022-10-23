@@ -1,6 +1,6 @@
 import { getPartialName } from "../lib/helpers";
-import Spacer from "./Spacer";
-import Wysiwyg from "./Wysiwyg";
+import Spacer from "./flexible/Spacer";
+import Wysiwyg from "./flexible/Wysiwyg";
 
 interface FlexibleProps {
     flexible: any;

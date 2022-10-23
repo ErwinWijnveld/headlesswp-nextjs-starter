@@ -2,10 +2,10 @@ import DefaultImage from "next/image";
 import React from "react";
 
 interface ImageProps {
-    image: {
+    image?: {
         sourceUrl: string;
         altText: string;
-        mediaDetails: {
+        mediaDetails?: {
             width: number;
             height: number;
         };

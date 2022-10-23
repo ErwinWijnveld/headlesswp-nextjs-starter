@@ -141,7 +141,7 @@ export default function HomepageNav({ isPage }) {
                             </span>
                         </div>
                         <div className="mt-8">
-                            <h3 className="text-lg font-medium">
+                            <h3 className="text-lg font-medium mb-0">
                                 <Link
                                     href={action.href}
                                     className="focus:outline-none"
@@ -156,7 +156,7 @@ export default function HomepageNav({ isPage }) {
                                     </a>
                                 </Link>
                             </h3>
-                            <p className="mt-2 text-sm text-gray-500">
+                            <p className="mt-2 text-sm text-gray-500 mb-0">
                                 {action.text}
                             </p>
                         </div>

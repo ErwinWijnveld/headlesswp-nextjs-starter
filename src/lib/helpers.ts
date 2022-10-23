@@ -31,3 +31,10 @@ export const getFieldType = (type:any) => {
             return 'text';
     }
 }
+
+// remove /graphql from url
+export const getWordpressUrl = (url:string) => {
+    const urlParts = url.split('/');
+    urlParts.pop();
+    return urlParts.join('/');
+}

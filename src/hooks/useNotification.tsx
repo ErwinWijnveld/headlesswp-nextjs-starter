@@ -112,10 +112,10 @@ export default function Notifications() {
                                             )}
                                         </div>
                                         <div className="ml-3 w-0 flex-1 pt-0.5">
-                                            <p className="text-sm font-medium text-gray-900 capitalize">
+                                            <p className="text-sm font-medium text-gray-900 capitalize m-0">
                                                 {notification?.type}
                                             </p>
-                                            <p className="mt-1 text-sm text-gray-500">
+                                            <p className="mt-1 text-sm text-gray-500 m-0">
                                                 {notification?.message}
                                             </p>
                                         </div>
