@@ -166,14 +166,14 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] Redirect wp-admin to admin
 -   [x] Options page integration and context
 -   [x] NPProgress loader
--   [ ] Homepage explanation component (TODO: preview privacy policy page)
+-   [x] Homepage explanation component
+-   [x] Apollo client
+-   [x] https://api.wordpress.org/secret-key/1.1/salt/ in docs
 -   [ ] Header + footer acf presets
 -   [ ] Standard header search bar integration
--   [ ] Apollo client
 -   [ ] Redirect naar admin url bij /wp-admin
 -   [ ] Custom post type support + example
 -   [ ] WP Menu support
--   [ ] https://api.wordpress.org/secret-key/1.1/salt/ in docs
 -   [ ] GravityForms support
 -   [ ] Login and register pages
 -   [ ] Authenticated routes
