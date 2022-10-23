@@ -8,7 +8,7 @@ interface MetaProps {
     };
 }
 
-export default function Meta({ seo }: MetaProps) {
+export default function Meta({ seo }: any) {
     const yoastHead = seo?.fullHead && parse(seo?.fullHead);
     return <Head>{yoastHead}</Head>;
 }

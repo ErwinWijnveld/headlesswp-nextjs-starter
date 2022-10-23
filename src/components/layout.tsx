@@ -1,7 +1,7 @@
 import { OptionsContextProvider } from "../hooks/useOptions";
 import Footer from "./Footer";
 import Header from "./Header";
-import Meta from "./meta";
+import Meta from "./Meta";
 import Alert from "./posts/alert";
 
 interface LayoutProps {
