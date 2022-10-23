@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "../presets/Image";
+import Card from "./Card";
 
 const posts = [
     {
@@ -71,48 +72,7 @@ export default function Archive({ projects }: ArchiveProps) {
             <div className="relative mx-auto max-w-7xl">
                 <div className="mx-auto grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
                     {projects?.nodes?.map((project, index) => (
-                        <div
-                            key={index}
-                            className="flex flex-col overflow-hidden rounded-lg shadow-lg"
-                        >
-                            <div className="flex-shrink-0">
-                                <Link href={`/projects/${project?.slug}`}>
-                                    <a className="h-48 w-full relative block">
-                                        <Image
-                                            image={project.featuredImage?.node}
-                                            objectFit="cover"
-                                            layout={"fill"}
-                                        />
-                                    </a>
-                                </Link>
-                            </div>
-                            <div className="flex flex-1 flex-col justify-between bg-white p-6">
-                                <div className="flex-1">
-                                    <p className="text-sm font-medium text-indigo-600 m-0">
-                                        <Link
-                                            href={`/projects/${project?.slug}`}
-                                        >
-                                            <a className="hover:underline">
-                                                {project?.title}
-                                            </a>
-                                        </Link>
-                                    </p>
-                                    <Link href={`/projects/${project?.slug}`}>
-                                        <a className="mt-2 block">
-                                            <p className="text-xl font-semibold text-gray-900">
-                                                {project?.title}
-                                            </p>
-                                            <div
-                                                dangerouslySetInnerHTML={{
-                                                    __html: project?.excerpt,
-                                                }}
-                                                className="mt-3 text-base text-gray-500"
-                                            />
-                                        </a>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
+                        <Card project={project} key={index} />
                     ))}
                 </div>
             </div>

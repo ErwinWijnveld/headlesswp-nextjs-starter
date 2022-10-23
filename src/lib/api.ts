@@ -160,6 +160,13 @@ export async function getAllProjectsForArchive(preview) {
               ${imageQuery}
             }
           }
+          projectCategories {
+            nodes {
+              uri
+              slug
+              name
+            }
+          }
         }
       }
       ${standardGlobalQueries()}
