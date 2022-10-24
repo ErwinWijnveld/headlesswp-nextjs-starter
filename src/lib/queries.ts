@@ -76,6 +76,25 @@ export const optionsQuery = `
     }
 `;
 
+export const projectQuery = `
+    title
+    slug
+    date
+    excerpt
+    featuredImage {
+        node {
+            ${imageQuery}
+        }
+    }
+    projectCategories {
+        nodes {
+            uri
+            slug
+            name
+        }
+    }
+`;
+
 /**
  *  Standard queries
  * @param suffix 

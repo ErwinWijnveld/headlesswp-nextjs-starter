@@ -1,4 +1,4 @@
-import { imageQuery, standardGlobalQueries, standardPostQueries } from "./queries";
+import { imageQuery, projectQuery, standardGlobalQueries, standardPostQueries } from "./queries";
 
 import { gql } from "@apollo/client";
 import { client } from "./apollo";
@@ -84,6 +84,20 @@ export async function getAllProjectsWithSlug() {
   `)
   return data?.projects
 }
+export async function getAllProjectCategoriesWithSlug() {
+  const data = await fetchAPI(`
+    {
+      projectCategories(first: 10000) {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `)
+  return data?.projectCategories
+}
 
 export async function getAllPagesWithSlug() {
   const data = await fetchAPI(`
@@ -143,6 +157,39 @@ export async function getAllPostsForHome(preview) {
   return data
 }
 
+export async function getProjectsForTaxonomy(slug, preview) {
+  const data = await fetchAPI(
+    `
+    query ProjectsForTaxonomy($slug: ID!) {
+      projectCategory(id: $slug, idType: SLUG) {
+        name
+        slug
+        projects(first: 10000) {
+          nodes {
+            ${projectQuery}
+          }
+        }
+      }
+      projectCategories {
+        nodes {
+          name
+          uri
+        }
+      }
+      ${standardGlobalQueries()}
+    }
+  `,
+    {
+      variables: {
+        slug,
+        onlyEnabled: !preview,
+        preview,
+      },
+    }
+  )
+
+  return data
+}
 
 
 export async function getAllProjectsForArchive(preview) {

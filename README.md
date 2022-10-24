@@ -173,6 +173,7 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [ ] Redirect wp-admin to admin
 -   [ ] Header + footer acf presets
 -   [ ] Standard header search bar integration
+-   [ ] Back button single project
 -   [ ] Blockquote styling
 -   [ ] Redirect naar admin url bij /wp-admin
 -   [ ] WP Menu support

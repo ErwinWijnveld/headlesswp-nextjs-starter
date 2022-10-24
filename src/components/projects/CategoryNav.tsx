@@ -14,13 +14,14 @@ export default function CategoryNav({ categories }) {
         {
             name: "All",
             uri: "/projects",
+            current: router.pathname === "/projects",
         },
         ...nodes,
     ];
 
     categoryNav.map((category) => {
         // add current true to item if it matches the current page
-        if (category.uri === router.pathname) {
+        if (category.uri === router.asPath + "/") {
             category.current = true;
         }
     });
