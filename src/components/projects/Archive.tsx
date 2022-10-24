@@ -68,8 +68,8 @@ interface ArchiveProps {
 export default function Archive({ projects }: ArchiveProps) {
     console.log(projects);
     return (
-        <div className="relative px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-8 lg:pb-28">
-            <div className="relative mx-auto max-w-7xl">
+        <div className="relative pt-16 pb-20 sm:px-6  lg:pt-8 lg:pb-28">
+            <div className="relative container max-w-7xl">
                 <div className="mx-auto grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
                     {projects?.nodes?.map((project, index) => (
                         <Card project={project} key={index} />

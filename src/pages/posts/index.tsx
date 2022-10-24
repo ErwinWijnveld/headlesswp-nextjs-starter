@@ -18,7 +18,7 @@ export default function Index({ allPosts: { edges }, preview, optionsMenu }) {
                 <title>Posts</title>
             </Head>
             <div className="py-12 container">
-                <Intro />
+                <Intro title="Posts." />
                 {heroPost && (
                     <HeroPost
                         title={heroPost.title}

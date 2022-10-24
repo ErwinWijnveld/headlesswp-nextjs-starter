@@ -82,7 +82,7 @@ export async function getAllProjectsWithSlug() {
       }
     }
   `)
-  return data?.posts
+  return data?.projects
 }
 
 export async function getAllPagesWithSlug() {
@@ -169,6 +169,12 @@ export async function getAllProjectsForArchive(preview) {
           }
         }
       }
+      projectCategories {
+        nodes {
+          name
+          uri
+        }
+      }
       ${standardGlobalQueries()}
     }
   `,
@@ -183,6 +189,95 @@ export async function getAllProjectsForArchive(preview) {
   return data
 }
 
+
+
+export async function getProjectAndMoreProjects(slug, preview, previewData) {
+  const projectPreview = preview && previewData?.project
+  // The slug may be the id of an unpublished project
+  const isId = Number.isInteger(Number(slug))
+  const isSameProject = isId
+    ? Number(slug) === projectPreview.id
+    : slug === projectPreview.slug
+  const isDraft = isSameProject && projectPreview?.status === 'draft'
+  const isRevision = isSameProject && projectPreview?.status === 'publish'
+  const data = await fetchAPI(
+    `
+
+    fragment ProjectFields on Project {
+      ${standardPostQueries('Project')}
+      title
+      excerpt
+      slug
+      date
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      projectCategories {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
+    query ProjectBySlug($id: ID!, $idType: ProjectIdType!) {
+      project(id: $id, idType: $idType) {
+        ...ProjectFields
+        content
+        ${
+          // Only some of the fields of a revision are considered as there are some inconsistencies
+          isRevision
+            ? `
+        revisions(first: 1, where: { orderby: { field: MODIFIED, order: DESC } }) {
+          edges {
+            node {
+              title
+              excerpt
+              content
+              author {
+                node {
+                  ...AuthorFields
+                }
+              }
+            }
+          }
+        }
+        `
+            : ''
+        }
+      }
+      projects(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+        edges {
+          node {
+            ...ProjectFields
+          }
+        }
+      }
+      ${standardGlobalQueries()}
+    }
+  `,
+    {
+      variables: {
+        id: isDraft ? projectPreview.id : slug,
+        idType: isDraft ? 'DATABASE_ID' : 'SLUG',
+      },
+    }
+  )
+
+  // Draft projects may not have an slug
+  if (isDraft) data.project.slug = projectPreview.id
+  // Apply a revision (changes in a published project)
+  if (isRevision && data.project.revisions) {
+    const revision = data.project.revisions.edges[0]?.node
+
+    if (revision) Object.assign(data.project, revision)
+    delete data.project.revisions
+  }
+
+  return data
+}
 
 
 export async function getPostAndMorePosts(slug, preview, previewData) {
