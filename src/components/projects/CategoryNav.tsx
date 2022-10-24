@@ -7,7 +7,10 @@ function classNames(...classes) {
 }
 
 export default function CategoryNav({ categories }) {
-    const { nodes } = categories;
+    if (!categories?.nodes) {
+        return null;
+    }
+    const nodes = categories?.nodes;
     const router = useRouter();
 
     const categoryNav = [
