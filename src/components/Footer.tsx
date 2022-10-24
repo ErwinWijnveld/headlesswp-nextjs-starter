@@ -124,7 +124,10 @@ export default function Footer() {
                                 <h3 className="text-base font-medium text-white">
                                     Solutions
                                 </h3>
-                                <ul role="list" className="mt-4 space-y-4">
+                                <ul
+                                    role="list"
+                                    className="mt-4 space-y-4 list-none pl-0"
+                                >
                                     {navigation.solutions.map((item) => (
                                         <li key={item.name}>
                                             <a
@@ -141,7 +144,10 @@ export default function Footer() {
                                 <h3 className="text-base font-medium text-white">
                                     Support
                                 </h3>
-                                <ul role="list" className="mt-4 space-y-4">
+                                <ul
+                                    role="list"
+                                    className="mt-4 space-y-4 list-none pl-0"
+                                >
                                     {navigation.support.map((item) => (
                                         <li key={item.name}>
                                             <a
@@ -160,7 +166,10 @@ export default function Footer() {
                                 <h3 className="text-base font-medium text-white">
                                     Company
                                 </h3>
-                                <ul role="list" className="mt-4 space-y-4">
+                                <ul
+                                    role="list"
+                                    className="mt-4 space-y-4 list-none pl-0"
+                                >
                                     {navigation.company.map((item) => (
                                         <li key={item.name}>
                                             <a
@@ -177,7 +186,10 @@ export default function Footer() {
                                 <h3 className="text-base font-medium text-white">
                                     Legal
                                 </h3>
-                                <ul role="list" className="mt-4 space-y-4">
+                                <ul
+                                    role="list"
+                                    className="mt-4 space-y-4 list-none pl-0"
+                                >
                                     {navigation.legal.map((item) => (
                                         <li key={item.name}>
                                             <a

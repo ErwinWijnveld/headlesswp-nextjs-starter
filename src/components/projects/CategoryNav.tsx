@@ -39,7 +39,7 @@ export default function CategoryNav({ categories }) {
                 <select
                     id="tabs"
                     name="tabs"
-                    className="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                    className="block w-full rounded-md border-gray-300 focus:border-slate-500 focus:ring-slate-500"
                     defaultValue={categoryNav?.find((tab) => tab.current).name}
                 >
                     {categoryNav?.map((tab) => (
@@ -54,7 +54,7 @@ export default function CategoryNav({ categories }) {
                             <a
                                 className={classNames(
                                     tab.current
-                                        ? "bg-indigo-100 text-indigo-700"
+                                        ? "bg-indigo-100 text-slate-700"
                                         : "text-gray-500 hover:text-gray-700",
                                     "px-3 py-2 font-medium text-sm rounded-md"
                                 )}

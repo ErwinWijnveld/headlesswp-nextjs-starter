@@ -20,7 +20,7 @@ const Card = ({ project }) => {
             </div>
             <div className="flex flex-1 flex-col justify-between bg-white p-6">
                 <div className="flex-1">
-                    <p className="text-sm font-medium text-indigo-600 m-0">
+                    <p className="text-sm font-medium text-slate-400 m-0">
                         <Link href={projectCategory?.uri || "/projects"}>
                             <a className="hover:underline">
                                 {projectCategory?.name || "Overige"}
