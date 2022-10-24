@@ -163,16 +163,17 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] Implement notifications hook
 -   [x] preview Pages
 -   [x] Wordpress standard pages routing + fetching
--   [x] Redirect wp-admin to admin
 -   [x] Options page integration and context
 -   [x] NPProgress loader
 -   [x] Homepage explanation component
 -   [x] Apollo client
 -   [x] https://api.wordpress.org/secret-key/1.1/salt/ in docs
--   [ ] Custom post type support + example
+-   [x] Custom post type support + example
 -   [ ] Custom post type taxonomy category support
+-   [ ] Redirect wp-admin to admin
 -   [ ] Header + footer acf presets
 -   [ ] Standard header search bar integration
+-   [ ] Blockquote styling
 -   [ ] Redirect naar admin url bij /wp-admin
 -   [ ] WP Menu support
 -   [ ] GravityForms support

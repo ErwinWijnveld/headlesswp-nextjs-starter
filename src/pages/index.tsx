@@ -43,7 +43,7 @@ export default function Index({ page, optionsMenu, preview }) {
     return (
         <Layout preview={preview} optionsMenu={optionsMenu}>
             {/* Remove homepagenav when you start developing */}
-            <HomepageNav isPage={false} />
+            <HomepageNav isPage={true} />
 
             <Flexible flexible={page?.flexiblePage} />
         </Layout>
