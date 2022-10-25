@@ -17,8 +17,12 @@
 @import 'nprogress/nprogress.css';
 
 #nprogress .bar {
-  @apply bg-slate-500;
+  @apply bg-indigo-500;
   height: 3px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px rgb(99 102 241 / 1), 0 0 5px rgb(99 102 241 / 1) !important;
 }
 
 /* Your own custom utilities */

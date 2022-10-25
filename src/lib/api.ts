@@ -262,10 +262,9 @@ export async function getProjectAndMoreProjects(slug, preview, previewData) {
         }
       }
       projectCategories {
-        edges {
-          node {
-            name
-          }
+        nodes {
+          name
+          uri
         }
       }
     }
@@ -295,11 +294,9 @@ export async function getProjectAndMoreProjects(slug, preview, previewData) {
             : ''
         }
       }
-      projects(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
-        edges {
-          node {
-            ...ProjectFields
-          }
+      projects(first: 4, where: { orderby: { field: DATE, order: DESC } }) {
+        nodes {
+          ...ProjectFields
         }
       }
       ${standardGlobalQueries()}
@@ -317,7 +314,7 @@ export async function getProjectAndMoreProjects(slug, preview, previewData) {
   if (isDraft) data.project.slug = projectPreview.id
   // Apply a revision (changes in a published project)
   if (isRevision && data.project.revisions) {
-    const revision = data.project.revisions.edges[0]?.node
+    const revision = data.project.revisions.nodes[0]
 
     if (revision) Object.assign(data.project, revision)
     delete data.project.revisions
