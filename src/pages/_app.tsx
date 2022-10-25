@@ -3,7 +3,6 @@ import Router from "next/router";
 import Script from "next/script";
 import NProgress from "nprogress";
 import "../assets/styles/index.css";
-import PageTransition from "../components/PageTransition";
 import Notifications, {
     NotificationContextProvider,
 } from "../hooks/useNotification";
@@ -35,9 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             )}
             <NotificationContextProvider>
                 <Notifications />
-                <PageTransition>
-                    <Component {...pageProps} />
-                </PageTransition>
+                <Component {...pageProps} />
             </NotificationContextProvider>
         </>
     );
