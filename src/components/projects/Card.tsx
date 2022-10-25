@@ -3,7 +3,6 @@ import Image from "../presets/Image";
 
 const Card = ({ project }) => {
     const projectCategories = project?.projectCategories?.nodes || null;
-    console.log("projectCategories", project);
     const projectCategory = projectCategories[0];
 
     return (

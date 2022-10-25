@@ -23,7 +23,6 @@ export default function ProjectCategory({
     preview,
     optionsMenu,
 }) {
-    console.log(projectCategory);
     const allProjects = projectCategory?.projects;
     return (
         <Layout preview={preview} optionsMenu={optionsMenu}>
@@ -57,8 +56,6 @@ export const getStaticProps: GetStaticProps = async ({
     const data = await getProjectsForTaxonomy(params?.slug, preview);
     const projectCategory = data?.projectCategory;
     const { optionsMenu, projectCategories } = data;
-
-    console.log(data);
 
     return {
         props: { projectCategory, optionsMenu, projectCategories, preview },

@@ -19,8 +19,6 @@ export default function Post({ project, moreProjects, optionsMenu, preview }) {
         return <ErrorPage statusCode={404} />;
     }
 
-    console.log(moreProjects);
-
     return (
         <Layout preview={preview} seo={project?.seo} optionsMenu={optionsMenu}>
             <div className="max-w-4xl container text-center mt-12">

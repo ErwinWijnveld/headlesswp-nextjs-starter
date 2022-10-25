@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -12,42 +12,28 @@ export default function CategoryNav({ categories }) {
     }
     const nodes = categories?.nodes;
     const router = useRouter();
+    const asPath = useRef(router.asPath);
+    const pathName = useRef(router.pathname);
 
     const categoryNav = [
         {
             name: "All",
             uri: "/projects",
-            current: router.pathname === "/projects",
+            current: pathName.current === "/projects",
         },
         ...nodes,
     ];
 
     categoryNav.map((category) => {
         // add current true to item if it matches the current page
-        if (category.uri === router.asPath + "/") {
+        if (category.uri === asPath.current + "/") {
             category.current = true;
         }
     });
 
     return (
         <div className="container max-w-7xl">
-            <div className="sm:hidden">
-                <label htmlFor="tabs" className="sr-only">
-                    Select a tab
-                </label>
-                {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
-                <select
-                    id="tabs"
-                    name="tabs"
-                    className="block w-full rounded-md border-gray-300 focus:border-slate-500 focus:ring-slate-500"
-                    defaultValue={categoryNav?.find((tab) => tab.current).name}
-                >
-                    {categoryNav?.map((tab) => (
-                        <option key={tab.name}>{tab.name}</option>
-                    ))}
-                </select>
-            </div>
-            <div className="hidden sm:block">
+            <div>
                 <nav className="flex space-x-4" aria-label="Tabs">
                     {categoryNav?.map((tab, index) => (
                         <Link href={tab.uri} key={index}>

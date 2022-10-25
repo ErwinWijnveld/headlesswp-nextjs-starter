@@ -66,7 +66,6 @@ interface ArchiveProps {
 }
 
 export default function Archive({ projects }: ArchiveProps) {
-    console.log(projects);
     return (
         <div className="relative pt-16 pb-20 sm:px-6  lg:pt-8 lg:pb-28">
             <div className="relative container max-w-7xl">
