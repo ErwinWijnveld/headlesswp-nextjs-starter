@@ -2,10 +2,10 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import Link from "next/link";
 import { Fragment, useState } from "react";
 import logo from "../assets/images/logo.svg";
 import { useOptions } from "../hooks/useOptions";
+import Link from "./presets/Link";
 
 /**
  * Filler content for the navigation menu.
@@ -115,10 +115,12 @@ export default function Header() {
                                         {mainNavigation.map((item, index) => (
                                             <Link
                                                 href={item?.link?.url}
-                                                target={item?.link?.target}
                                                 key={index}
                                             >
-                                                <a className="rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-slate-700">
+                                                <a
+                                                    target={item?.link?.target}
+                                                    className="rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-slate-700"
+                                                >
                                                     {item?.link?.title}
                                                 </a>
                                             </Link>
@@ -238,11 +240,7 @@ export default function Header() {
                         <Disclosure.Panel className="lg:hidden">
                             <div className="space-y-1 px-2 pt-2 pb-3">
                                 {mainNavigation.map((item, index) => (
-                                    <Link
-                                        href={item?.link?.url}
-                                        target={item?.link?.target}
-                                        key={index}
-                                    >
+                                    <Link href={item?.link?.url} key={index}>
                                         <Disclosure.Button className="block rounded-md py-2 px-3 text-base font-medium text-white hover:bg-slate-700 hover:text-white">
                                             {item?.link?.title}
                                         </Disclosure.Button>

@@ -16,27 +16,38 @@ const PageTransition = ({ children }) => {
 
     return (
         <div>
-            <AnimatePresence onExitComplete={transitionCallback}>
+            <AnimatePresence
+                exitBeforeEnter
+                onExitComplete={transitionCallback}
+            >
                 <motion.div
                     key={router.asPath}
-                    className="absolute inset-0 z-50 bg-white"
                     initial="initialState"
                     animate="animateState"
                     exit="exitState"
                     transition={{
-                        duration: 1,
+                        duration: 0.75,
                         ease: EASE,
                     }}
                     onAnimationComplete={() => window.scrollTo(0, 0)}
                     variants={{
                         initialState: {
                             opacity: loaded ? 0 : 1,
+                            clipPath:
+                                "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
                         },
                         animateState: {
                             opacity: 1,
+                            clipPath:
+                                "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+                            transition: {
+                                duration: 0.3,
+                            },
                         },
                         exitState: {
                             opacity: 1,
+                            clipPath:
+                                "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)",
                         },
                     }}
                 >

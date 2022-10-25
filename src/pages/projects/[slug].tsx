@@ -1,10 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import ErrorPage from "next/error";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Flexible from "../../components/Flexible";
 import Layout from "../../components/layout";
 import Image from "../../components/presets/Image";
+import Link from "../../components/presets/Link";
 import Archive from "../../components/projects/Archive";
 
 import {

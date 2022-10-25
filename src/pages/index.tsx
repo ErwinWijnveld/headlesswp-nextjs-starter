@@ -1,20 +1,11 @@
 import { GetStaticProps } from "next";
-import ErrorPage from "next/error";
-import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Flexible from "../components/Flexible";
-import Hero from "../components/Hero";
 import Layout from "../components/layout";
-import Container from "../components/posts/container";
-import HeroPost from "../components/posts/hero-post";
-import Intro from "../components/posts/intro";
-import MoreStories from "../components/posts/more-stories";
 import HomepageNav from "../components/presets/HomepageNav";
 import { useNotification } from "../hooks/useNotification";
-import { getAllPostsForHome, getPageWithPreview } from "../lib/api";
-import { CMS_NAME } from "../lib/constants";
+import { getPageWithPreview } from "../lib/api";
 
 export default function Index({ page, optionsMenu, preview }) {
     const router = useRouter();

@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "../presets/Image";
+import Link from "../presets/Link";
 import Card from "./Card";
 
 const posts = [

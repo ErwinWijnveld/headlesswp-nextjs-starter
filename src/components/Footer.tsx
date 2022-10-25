@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import logo from "../assets/images/logo.svg";
 import { useOptions } from "../hooks/useOptions";
+import Link from "./presets/Link";
 
 const navigation = {
     solutions: [

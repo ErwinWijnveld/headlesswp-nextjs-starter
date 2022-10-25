@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
+import Link from "../presets/Link";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");

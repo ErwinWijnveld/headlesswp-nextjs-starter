@@ -1,7 +1,7 @@
 import cn from "classnames";
 import Image from "next/image";
-import Link from "next/link";
 import placeholder from "../../assets/images/placeholder.png";
+import Link from "../presets/Link";
 
 interface Props {
     title: string;
