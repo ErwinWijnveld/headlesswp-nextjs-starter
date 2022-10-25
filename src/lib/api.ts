@@ -38,6 +38,23 @@ export async function getPreviewPost(id, idType = 'DATABASE_ID') {
   return data.post
 }
 
+export async function getPreviewProject(id, idType = 'DATABASE_ID') {
+  const data = await fetchAPI(
+    `
+    query PreviewProject($id: ID!, $idType: ProjectIdType!) {
+      project(id: $id, idType: $idType) {
+        databaseId
+        slug
+        status
+      }
+    }`,
+    {
+      variables: { id, idType },
+    }
+  )
+  return data.project
+}
+
 export async function getPreviewPage(id, idType = 'DATABASE_ID') {
   const data = await fetchAPI(
     `

@@ -171,6 +171,7 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] Custom post type support + example
 -   [x] Custom post type taxonomy category support
 -   [x] Header acf presets
+-   [ ] Preview custom post type project
 -   [ ] Redirect wp-admin to admin
 -   [ ] Footer acf presets
 -   [ ] Standard header search bar integration
