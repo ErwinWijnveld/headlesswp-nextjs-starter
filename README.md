@@ -169,10 +169,13 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] Apollo client
 -   [x] https://api.wordpress.org/secret-key/1.1/salt/ in docs
 -   [x] Custom post type support + example
--   [ ] Custom post type taxonomy category support
+-   [x] Custom post type taxonomy category support
+-   [x] Header acf presets
 -   [ ] Redirect wp-admin to admin
--   [ ] Header + footer acf presets
+-   [ ] Footer acf presets
 -   [ ] Standard header search bar integration
+-   [ ] Use nodes instead of edges.nodes in standard posts
+-   [ ] Change layout of standard posts
 -   [ ] Back button single project
 -   [ ] Blockquote styling
 -   [ ] Redirect naar admin url bij /wp-admin
