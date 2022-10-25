@@ -299,11 +299,6 @@ export async function getProjectAndMoreProjects(slug, preview, previewData) {
               title
               excerpt
               content
-              author {
-                node {
-                  ...AuthorFields
-                }
-              }
             }
           }
         }
