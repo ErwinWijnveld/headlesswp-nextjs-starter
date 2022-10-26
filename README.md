@@ -8,33 +8,34 @@ This is a starter for a headless WordPress site using Next.js. It uses the WordP
 
 You will need to install the required plugins for this to work. You can do this by going to the plugins page in your WordPress admin and installing the following plugins (zip folder for all plugins in ./docs/pluginpack.zip):
 
--   WPGraphQL
+-   ACF Content Analysis voor Yoast SEO
+-   Add WPGraphQL SEO
+-   Advanced Custom Fields PRO
+-   Classic Editor
+-   Gravity Forms
+-   Headless WP Email Settings
+-   Jetpack
+-   SVG Support
+-   WP GraphQL
+-   WPGraphQL CORS
 -   WPGraphQL for Advanced Custom Fields
+-   WPGraphQL for Gravity Forms
+-   WPGraphQL JWT Authentication
+-   Yoast SEO
 
-Then you will need to configure your wordpress settings
+#### Important
 
--   Go to Settings > Permalinks and set your permalinks to Post name
--   Go to Settings > Reading and set your front page to display a static page and select the page you want to use as your homepage
--   Go to Settings > General and set your site url to http://localhost:3000 (or whatever your frontend url is)
--   Go to Settings > WPGraphQL > Settings > cors and set the allowed origins to http://localhost:3000 (or whatever your frontend url is)
+Install the [headlesswp starter plugin](http://https://github.com/ErwinWijnveld/headlesswp-plugin-starter "headlesswp starter plugin"), this is where you will be doing all your backend work.
 
-### Step 2. Populate Content
+#### Then you will need to configure your wordpress/WPGraphQL settings
 
-Inside your WordPress admin, go to **Posts** and start adding new posts:
+-   Go to Settings > Permalinks and set your permalinks to "Post name"
+-   Go to Settings > General and set your site url to https://headlesswpstarter.com (or whatever your frontend url is)
+-   Go to Settings > WPGraphQL > Settings > cors and set the allowed origins to http://localhost:3000 (or whatever your development/frontend url is)
+-   Go to Settings > WPGraphQL > Settings > cors and check the following boxes: `Send site credentials.`, `Add Site Address to "Access-Control-Allow-Origin" header`, `Enable login mutation`, `Enable logout mutation`.
+-   Go to Settings > WPGraphQL > Settings > cors and set the `Extend "Access-Control-Allow-Headers` to `content-type`.
 
--   We recommend creating at least **2 posts**
--   Use dummy data for the content
--   Pick an author from your WordPress users
--   Add a **Featured Image**. You can download one from [Unsplash](https://unsplash.com/)
--   Fill the **Excerpt** field
-
-![New post](./docs/new-post.png)
-
-When you’re done, make sure to **Publish** the posts.
-
-> **Note:** Only **published** posts and public fields will be rendered by the app unless [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) is enabled.
-
-### Step 3. Set up environment variables
+### Step 2. Set up environment variables
 
 Copy the `.env.local.example` file in this directory to `.env.local` (which will be ignored by Git):
 
@@ -47,10 +48,10 @@ Then open `.env.local` and set `WORDPRESS_API_URL` to be the URL to your GraphQL
 Your `.env.local` file should look like this:
 
 ```bash
-WORDPRESS_API_URL=...
+WORDPRESS_API_URL=https://myapp.vercel.app/graphql
 
-NEXT_PUBLIC_WORDPRESS_URL=
-NEXT_PUBLIC_FRONTEND_URL=
+NEXT_PUBLIC_WORDPRESS_URL=https://myapp.vercel.app/graphql
+NEXT_PUBLIC_FRONTEND_URL=http://localhost:3000
 
 # Only required if you want to enable preview mode
 # WORDPRESS_AUTH_REFRESH_TOKEN=
@@ -61,7 +62,7 @@ NEXT_PUBLIC_FRONTEND_URL=
 
 ```
 
-### Step 4. Run Next.js in development mode
+### Step 3. Run Next.js in development mode
 
 ```bash
 yarn install
@@ -70,21 +71,11 @@ yarn dev
 
 Your blog should be up and running on [http://localhost:3000](http://localhost:3000)!
 
-### Step 5. Add authentication for Preview Mode (Optional)
+### Step 4. Add authentication for Preview Mode (Optional)
 
-**This step is optional.** By default, the blog will work with public posts from your WordPress site. Private content such as unpublished posts and private fields cannot be retrieved. To have access to unpublished posts you'll need to set up authentication.
+**This step is optional.** By default, the blog will work with public posts, pages and projects from your WordPress site. Private content such as unpublished posts and private fields cannot be retrieved. To have access to unpublished posts you'll need to set up authentication.
 
-To add [authentication to WPGraphQL](https://docs.wpgraphql.com/guides/authentication-and-authorization/), first you need to add the [WPGraphQL JWT plugin](https://github.com/wp-graphql/wp-graphql-jwt-authentication) to your WordPress Admin following the same process you used to add the WPGraphQL plugin.
-
-> Adding the WPGraphQL JWT plugin will disable your GraphQL API until you add a JWT secret ([GitHub issue](https://github.com/wp-graphql/wp-graphql-jwt-authentication/issues/91)).
-
-Once that's done, you'll need to access the WordPress filesystem to add the secret required to validate JWT tokens. I recommend using SFTP — the instructions vary depending on your hosting provider. For example:
-
-Once you have SFTP access, [generate your token](https://api.wordpress.org/secret-key/1.1/salt/) and open `wp-config.php` and add a secret for your JWT:
-
-```php
-define( 'GRAPHQL_JWT_AUTH_SECRET_KEY', 'YOUR_STRONG_SECRET' );
-```
+> To add a [WPGraphQL JWT plugin](https://github.com/wp-graphql/wp-graphql-jwt-authentication) secret to your wordpress installation you go to Website Settings > General -> GRAPHQL JWT AUTH SECRET KEY and [add the generated auth token.](https://api.wordpress.org/secret-key/1.1/salt/)
 
 > You can read more about this in the documentation for [WPGraphQL JWT Authentication](https://docs.wpgraphql.com/extensions/wpgraphql-jwt-authentication/).
 
@@ -127,7 +118,7 @@ NEXT_PUBLIC_GOOGLE_ANALYTICS=
 
 **Important:** Restart your Next.js server to update the environment variables.
 
-### Step 6. Try preview mode
+### Step 5. Try preview mode
 
 On your WordPress admin, create a new post like before, but **do not publish** it.
 
