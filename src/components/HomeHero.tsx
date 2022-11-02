@@ -43,6 +43,7 @@ const HomeHero = ({ changeScreen }) => {
                     alt="Vercel Logo"
                     layout="fill"
                     className="object-contain sm:object-cover"
+                    priority
                 />
             </div>
             <div className="relative z-10 text-white h-full py-24 px-4 flex flex-col items-center justify-center text-center mix-blend-difference">
