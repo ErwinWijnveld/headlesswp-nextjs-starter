@@ -1,7 +1,8 @@
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Flexible from "../components/Flexible";
+import HomeHero from "../components/HomeHero";
 import Layout from "../components/layout";
 import HomepageNav from "../components/presets/HomepageNav";
 import { useNotification } from "../hooks/useNotification";
@@ -10,31 +11,28 @@ import { getPageWithPreview } from "../lib/api";
 export default function Index({ page, optionsMenu, preview }) {
     const router = useRouter();
     const { showNotification } = useNotification();
+    const [screen, setScreen] = useState(false);
 
-    useEffect(() => {
-        if (!router.isFallback && !page?.slug) {
-            showNotification({
-                message: "Please create a homepage.",
-                type: "error",
-            });
-            return;
-        }
-        showNotification({
-            message: "Homepage linked successfully!",
-            type: "success",
-        });
-        return;
-    }, []);
+    const changeScreen = () => {
+        setScreen((prev) => !prev);
+    };
 
     if (!router.isFallback && !page?.slug) {
-        return <HomepageNav isPage={false} />;
+        if (screen) {
+            return <HomepageNav isPage={false} />;
+        }
+        return <HomeHero changeScreen={changeScreen} />;
         // return <ErrorPage statusCode={404} />;
     }
 
     return (
         <Layout preview={preview} optionsMenu={optionsMenu}>
             {/* Remove homepagenav when you start developing */}
-            <HomepageNav isPage={true} />
+            {screen ? (
+                <HomepageNav isPage={false} />
+            ) : (
+                <HomeHero changeScreen={changeScreen} />
+            )}
 
             <Flexible flexible={page?.flexiblePage} />
         </Layout>

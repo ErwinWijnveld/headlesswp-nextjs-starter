@@ -12,21 +12,21 @@ export default function CategoryNav({ categories }) {
     }
     const nodes = categories?.nodes;
     const router = useRouter();
-    const asPath = useRef(router.asPath);
-    const pathName = useRef(router.pathname);
+    const asPath = router.asPath;
+    const pathName = router.pathname;
 
     const categoryNav = [
         {
             name: "All",
             uri: "/projects",
-            current: pathName.current === "/projects",
+            current: pathName === "/projects",
         },
         ...nodes,
     ];
 
     categoryNav.map((category) => {
         // add current true to item if it matches the current page
-        if (category.uri === asPath.current + "/") {
+        if (category.uri === asPath + "/") {
             category.current = true;
         }
     });

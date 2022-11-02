@@ -22,8 +22,9 @@ module.exports = {
     return [
       {
         source: '/wp-admin',
-        destination: process.env.WORDPRESS_API_URL.substr(0, process.env.WORDPRESS_API_URL.lastIndexOf("\\")) + '/wp-admin',
-        permanent: true,
+        destination: 'https://starter.dev.booom.digital/wp-admin',
+        permanent: false,
+        basePath: false,
       },
     ]
   },

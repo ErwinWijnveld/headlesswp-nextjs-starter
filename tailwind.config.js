@@ -10,7 +10,7 @@ const colors = require('tailwindcss/colors')
 const globalStyles = ({ addBase, config }) => {
   addBase({
     p: {
-      marginBottom: config('theme.margin.3'),
+      marginBottom: config('theme.margin.4'),
       lineHeight: config('theme.lineHeight.normal'),
     },
     'h1, h2, h3, h4, h5': {
@@ -26,6 +26,16 @@ const globalStyles = ({ addBase, config }) => {
     'ol, ul': { paddingLeft: config('theme.padding.4') },
     ol: { listStyleType: 'decimal' },
     ul: { listStyleType: 'disc' },
+    // blockquote styles
+    blockquote: {
+      borderLeftWidth: config('theme.borderWidth.4'),
+      borderLeftColor: config('theme.colors.gray.300'),
+      paddingTop: config('theme.padding.4'),
+      paddingBottom: config('theme.padding.px'),
+      paddingLeft: config('theme.padding.4'),
+      marginBottom: config('theme.padding.4'),
+      backgroundColor: config('theme.colors.gray.50'),
+    },
   });
 }
 
@@ -51,6 +61,10 @@ module.exports = {
         success: '#0070f3',
         cyan: '#79FFE1',
       },
+      transitionTimingFunction: {
+        'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
+        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+      }
     },
   },
   plugins: [

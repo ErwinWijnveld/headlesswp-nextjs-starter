@@ -127,7 +127,7 @@ Now, if you go to `http://localhost:3000`, you won’t see the post. However, if
 To enable Preview Mode, go to this URL:
 
 ```
-http://localhost:3000/api/preview?secret=<secret>&id=<id>
+http://localhost:3000/api/preview-page?secret=<secret>&id=<id>
 ```
 
 -   `<secret>` should be the string you entered for `WORDPRESS_PREVIEW_SECRET`.
@@ -165,14 +165,13 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] Page transition component
 -   [x] Persist next styles thru page transition
 -   [x] Preview custom post type project
--   [ ] Redirect wp-admin to admin
--   [ ] Footer acf presets
+-   [x] Blockquote styling
 -   [ ] Standard header search bar integration
--   [ ] Use nodes instead of edges.nodes in standard posts
 -   [ ] Change layout of standard posts
 -   [ ] Back button single project
--   [ ] Blockquote styling
--   [ ] Redirect naar admin url bij /wp-admin
+-   [ ] Redirect wp-admin to admin
+-   [ ] Footer acf presets
+-   [ ] Use nodes instead of edges.nodes in standard posts
 -   [ ] WP Menu support
 -   [ ] GravityForms support
 -   [ ] Login and register pages
