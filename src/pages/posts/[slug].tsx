@@ -1,18 +1,21 @@
-import { GetStaticPaths, GetStaticProps } from "next";
-import ErrorPage from "next/error";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import Flexible from "../../components/Flexible";
-import Layout from "../../components/layout";
-import Container from "../../components/posts/container";
-import MoreStories from "../../components/posts/more-stories";
-import PostBody from "../../components/posts/post-body";
-import PostHeader from "../../components/posts/post-header";
-import PostTitle from "../../components/posts/post-title";
-import SectionSeparator from "../../components/posts/section-separator";
-import Tags from "../../components/posts/tags";
-import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
-import { CMS_NAME } from "../../lib/constants";
+import { GetStaticPaths, GetStaticProps } from 'next';
+import ErrorPage from 'next/error';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import Flexible from '../../components/Flexible';
+import Layout from '../../components/layout';
+import Container from '../../components/posts/container';
+import MoreStories from '../../components/posts/more-stories';
+import PostBody from '../../components/posts/post-body';
+import PostHeader from '../../components/posts/post-header';
+import PostTitle from '../../components/posts/post-title';
+import SectionSeparator from '../../components/posts/section-separator';
+import Tags from '../../components/posts/tags';
+import { CMS_NAME } from '../../lib/constants';
+import {
+    getAllPostsWithSlug,
+    getPostAndMorePosts,
+} from '../../lib/queries/posts';
 
 export default function Post({ post, morePosts, optionsMenu, preview }) {
     const router = useRouter();

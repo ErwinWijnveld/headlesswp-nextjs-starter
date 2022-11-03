@@ -1,16 +1,16 @@
-import { GetStaticProps } from "next";
-import Head from "next/head";
-import EmptyState from "../../components/EmptyState";
-import Layout from "../../components/layout";
-import Container from "../../components/posts/container";
-import HeroPost from "../../components/posts/hero-post";
-import Intro from "../../components/posts/intro";
-import MoreStories from "../../components/posts/more-stories";
-import Archive from "../../components/projects/Archive";
-import CategoryNav from "../../components/projects/CategoryNav";
-import { getAllPostsForHome, getAllProjectsForArchive } from "../../lib/api";
-import { CMS_NAME } from "../../lib/constants";
-import { getWordpressUrl } from "../../lib/helpers";
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
+import EmptyState from '../../components/EmptyState';
+import Layout from '../../components/layout';
+import Container from '../../components/posts/container';
+import HeroPost from '../../components/posts/hero-post';
+import Intro from '../../components/posts/intro';
+import MoreStories from '../../components/posts/more-stories';
+import Archive from '../../components/projects/Archive';
+import CategoryNav from '../../components/projects/CategoryNav';
+import { CMS_NAME } from '../../lib/constants';
+import { getWordpressUrl } from '../../lib/helpers';
+import { getAllProjectsForArchive } from '../../lib/queries/projects';
 
 export default function Index({
     allProjects,
@@ -28,14 +28,14 @@ export default function Index({
                 <Archive projects={allProjects} />
             ) : (
                 <EmptyState
-                    title={"No projects"}
-                    description={"Get started by creating a new project."}
+                    title={'No projects'}
+                    description={'Get started by creating a new project.'}
                     button={{
-                        title: "New Project",
+                        title: 'New Project',
                         url: `${getWordpressUrl(
                             process.env.NEXT_PUBLIC_WORDPRESS_URL
                         )}/wp-admin/post-new.php?post_type=project`,
-                        target: "_blank",
+                        target: '_blank',
                     }}
                 />
             )}

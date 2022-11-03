@@ -1,86 +1,86 @@
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
-import { Fragment, useState } from "react";
-import logo from "../assets/images/logo.svg";
-import { useOptions } from "../hooks/useOptions";
-import Link from "./presets/Link";
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { HomeIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { Fragment, useState } from 'react';
+import logo from '../assets/images/logo.svg';
+import { useOptions } from '../hooks/useOptions';
+import Link from './presets/Link';
 
 /**
  * Filler content for the navigation menu.
  */
 
 const user = {
-    name: "Floyd Miles",
-    email: "floy.dmiles@example.com",
+    name: 'Floyd Miles',
+    email: 'floy.dmiles@example.com',
     imageUrl:
-        "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+        'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 };
 const navigation = [
     {
         link: {
-            url: "/",
-            title: "Home",
-            target: "_self",
+            url: '/',
+            title: 'Home',
+            target: '_self',
         },
     },
     {
         link: {
-            url: "/sample-page",
-            title: "Sample page",
-            target: "_self",
+            url: '/sample-page',
+            title: 'Sample page',
+            target: '_self',
         },
     },
     {
         link: {
-            url: "/posts",
-            title: "Posts",
-            target: "_self",
+            url: '/posts',
+            title: 'Posts',
+            target: '_self',
         },
     },
     {
         link: {
-            url: "/projects",
-            title: "Projects",
-            target: "_self",
+            url: '/projects',
+            title: 'Projects',
+            target: '_self',
         },
     },
 ];
 const breadcrumbs = [
-    { name: "Projects", href: "#", current: false },
-    { name: "Project Nero", href: "#", current: true },
+    { name: 'Projects', href: '#', current: false },
+    { name: 'Project Nero', href: '#', current: true },
 ];
 const userNavigation = [
-    { name: "Your Profile", href: "#" },
-    { name: "Settings", href: "#" },
-    { name: "Sign out", href: "#" },
+    { name: 'Your Profile', href: '#' },
+    { name: 'Settings', href: '#' },
+    { name: 'Sign out', href: '#' },
 ];
 
 const settings = [
     {
-        name: "Public access",
+        name: 'Public access',
         description:
-            "This project would be available to anyone who has the link",
+            'This project would be available to anyone who has the link',
     },
     {
-        name: "Private to Project Members",
-        description: "Only members of this project would be able to access",
+        name: 'Private to Project Members',
+        description: 'Only members of this project would be able to access',
     },
     {
-        name: "Private to you",
-        description: "You are the only one able to access this project",
+        name: 'Private to you',
+        description: 'You are the only one able to access this project',
     },
 ];
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
+    return classes.filter(Boolean).join(' ');
 }
 
 export default function Header() {
-    const [selected, setSelected] = useState(settings[0]);
-
     const options = useOptions();
+    const router = useRouter();
     const header = options?.header;
 
     const mainNavigation = header?.menuItems ?? navigation;
@@ -94,7 +94,7 @@ export default function Header() {
                             <div className="flex h-16 justify-between">
                                 <div className="flex items-center px-2 lg:px-0">
                                     <div className="flex flex-shrink-0 items-center">
-                                        <Link href={"/"}>
+                                        <Link href={'/'}>
                                             <a className="h-10 w-10 relative">
                                                 <Image
                                                     src={
@@ -104,8 +104,8 @@ export default function Header() {
                                                             : logo
                                                     }
                                                     alt="Logo"
-                                                    layout={"fill"}
-                                                    objectFit={"contain"}
+                                                    layout={'fill'}
+                                                    objectFit={'contain'}
                                                     priority
                                                 />
                                             </a>
@@ -119,7 +119,13 @@ export default function Header() {
                                             >
                                                 <a
                                                     target={item?.link?.target}
-                                                    className="rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-slate-700"
+                                                    className={
+                                                        'rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-slate-700 ' +
+                                                        (router?.asPath ===
+                                                        item?.link?.url
+                                                            ? ' bg-slate-700'
+                                                            : '')
+                                                    }
                                                 >
                                                     {item?.link?.title}
                                                 </a>

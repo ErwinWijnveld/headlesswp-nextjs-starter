@@ -1,10 +1,10 @@
-import { GetStaticPaths, GetStaticProps } from "next";
-import ErrorPage from "next/error";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import Flexible from "../components/Flexible";
-import Layout from "../components/layout";
-import { getAllPagesWithSlug, getPageWithPreview } from "../lib/api";
+import { GetStaticPaths, GetStaticProps } from 'next';
+import ErrorPage from 'next/error';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import Flexible from '../components/Flexible';
+import Layout from '../components/layout';
+import { getAllPagesWithSlug, getPageWithPreview } from '../lib/queries/pages';
 
 export default function Page({ page, preview, optionsMenu }) {
     const router = useRouter();

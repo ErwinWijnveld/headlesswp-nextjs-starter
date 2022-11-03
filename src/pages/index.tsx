@@ -1,12 +1,12 @@
-import { GetStaticProps } from "next";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import Flexible from "../components/Flexible";
-import HomeHero from "../components/HomeHero";
-import Layout from "../components/layout";
-import HomepageNav from "../components/presets/HomepageNav";
-import { useNotification } from "../hooks/useNotification";
-import { getPageWithPreview } from "../lib/api";
+import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import Flexible from '../components/Flexible';
+import HomeHero from '../components/HomeHero';
+import Layout from '../components/layout';
+import HomepageNav from '../components/presets/HomepageNav';
+import { useNotification } from '../hooks/useNotification';
+import { getPageWithPreview } from '../lib/queries/pages';
 
 export default function Index({ page, optionsMenu, preview }) {
     const router = useRouter();
@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps = async ({
     preview = false,
     previewData,
 }) => {
-    const data = await getPageWithPreview("/", preview, previewData);
+    const data = await getPageWithPreview('/', preview, previewData);
 
     return {
         props: {

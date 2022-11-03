@@ -25,7 +25,7 @@ You will need to install the required plugins for this to work. You can do this 
 
 #### Important
 
-Install the [headlesswp starter plugin](http://https://github.com/ErwinWijnveld/headlesswp-plugin-starter "headlesswp starter plugin"), this is where you will be doing all your backend work.
+Install the [headlesswp starter plugin](http://https://github.com/ErwinWijnveld/headlesswp-plugin-starter 'headlesswp starter plugin'), this is where you will be doing all your backend work.
 
 #### Then you will need to configure your wordpress/WPGraphQL settings
 
@@ -166,7 +166,7 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] Persist next styles thru page transition
 -   [x] Preview custom post type project
 -   [x] Blockquote styling
--   [ ] Standard header search bar integration
+-   [ ] Standard header search bar integration with @docsearch/react
 -   [ ] Change layout of standard posts
 -   [ ] Back button single project
 -   [ ] Redirect wp-admin to admin
