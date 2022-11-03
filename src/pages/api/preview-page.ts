@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getPreviewPage } from '../../lib/api'
+import { getPreviewPage } from '../../lib/queries/pages'
 
 export default async function preview(
   req: NextApiRequest,
