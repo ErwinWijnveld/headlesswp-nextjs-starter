@@ -6,17 +6,19 @@ import Flexible from '../components/Flexible';
 import Layout from '../components/layout';
 import { getAllPagesWithSlug, getPageWithPreview } from '../lib/queries/pages';
 
-export default function Page({ page, preview, optionsMenu }) {
+export default function Page({ page, preview, optionsMenu, gfForm }) {
     const router = useRouter();
+
+    const forms = [gfForm];
 
     if (!router.isFallback && !page?.slug) {
         return <ErrorPage statusCode={404} />;
     }
 
     return (
-        <Layout preview={preview} optionsMenu={optionsMenu}>
+        <Layout preview={preview} optionsMenu={optionsMenu} forms={forms}>
             <div className="container max-w-5xl py-12">
-                <h1 className=" font-bold text-6xl mb-8">{page?.title}</h1>
+                <h1 className=" font-bold md:text-6xl mb-8">{page?.title}</h1>
                 {page?.content && (
                     <div
                         className="content"
@@ -41,6 +43,7 @@ export const getStaticProps: GetStaticProps = async ({
             preview,
             page: data.page,
             optionsMenu: data.optionsMenu,
+            gfForm: data.gfForm,
         },
         revalidate: 10,
     };

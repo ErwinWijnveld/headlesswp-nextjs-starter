@@ -1,8 +1,9 @@
-import { OptionsContextProvider } from "../hooks/useOptions";
-import Footer from "./Footer";
-import Header from "./Header";
-import Meta from "./Meta";
-import Alert from "./posts/alert";
+import { FormContextProvider } from '../hooks/useForm';
+import { OptionsContextProvider } from '../hooks/useOptions';
+import Footer from './Footer';
+import Header from './Header';
+import Meta from './Meta';
+import Alert from './posts/alert';
 
 interface LayoutProps {
     preview?: boolean;
@@ -11,6 +12,7 @@ interface LayoutProps {
     seo?: {
         fullHead: string;
     };
+    forms?: any;
 }
 
 export default function Layout({
@@ -18,16 +20,19 @@ export default function Layout({
     children,
     seo,
     optionsMenu,
+    forms,
 }: LayoutProps) {
     return (
         <OptionsContextProvider value={optionsMenu?.optionsMenu}>
-            <Meta seo={seo} />
-            <Header />
-            <div className="min-h-screen">
-                <Alert preview={preview} />
-                <main className="relative z-[1]">{children}</main>
-            </div>
-            <Footer />
+            <FormContextProvider value={forms || ''}>
+                <Meta seo={seo} />
+                <Header />
+                <div className="min-h-screen">
+                    <Alert preview={preview} />
+                    <main className="relative z-[1]">{children}</main>
+                </div>
+                <Footer />
+            </FormContextProvider>
         </OptionsContextProvider>
     );
 }

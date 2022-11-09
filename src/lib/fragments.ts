@@ -1,3 +1,4 @@
+import { getFormById } from "./queries/gfravityforms";
 
 export const linkQuery = `
     url
@@ -36,6 +37,12 @@ export const flexibleQuery = (suffix) => `
                 wysiwyg {
                     container
                     text
+                }
+            }
+            ... on ${suffix}_Flexible${suffix.toLowerCase()}_FlexContent_Form {
+                __typename
+                form {
+                    formId
                 }
             }
         }
@@ -110,4 +117,5 @@ export const standardPostQueries = (suffix:string) => `
 
 export const standardGlobalQueries = (suffix?:string) => `
     ${optionsQuery}
+    ${getFormById(1)}
 `;

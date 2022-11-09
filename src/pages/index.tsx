@@ -8,7 +8,7 @@ import HomepageNav from '../components/presets/HomepageNav';
 import { useNotification } from '../hooks/useNotification';
 import { getPageWithPreview } from '../lib/queries/pages';
 
-export default function Index({ page, optionsMenu, preview }) {
+export default function Index({ page, optionsMenu, preview, gfForm }) {
     const router = useRouter();
     const { showNotification } = useNotification();
     const [screen, setScreen] = useState(false);
@@ -16,6 +16,8 @@ export default function Index({ page, optionsMenu, preview }) {
     const changeScreen = () => {
         setScreen((prev) => !prev);
     };
+
+    const forms = [gfForm];
 
     if (!router.isFallback && !page?.slug) {
         if (screen) {
@@ -26,7 +28,7 @@ export default function Index({ page, optionsMenu, preview }) {
     }
 
     return (
-        <Layout preview={preview} optionsMenu={optionsMenu}>
+        <Layout preview={preview} optionsMenu={optionsMenu} forms={forms}>
             {/* Remove homepagenav when you start developing */}
             {screen ? (
                 <HomepageNav isPage={false} />
@@ -51,6 +53,7 @@ export const getStaticProps: GetStaticProps = async ({
             preview,
             page: data.page,
             optionsMenu: data.optionsMenu,
+            gfForm: data.gfForm,
         },
         revalidate: 10,
     };

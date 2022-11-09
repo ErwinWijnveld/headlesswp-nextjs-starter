@@ -1,6 +1,7 @@
-import { getPartialName } from "../lib/helpers";
-import Spacer from "./flexible/Spacer";
-import Wysiwyg from "./flexible/Wysiwyg";
+import { getPartialName } from '../lib/helpers';
+import Form from './flexible/Form';
+import Spacer from './flexible/Spacer';
+import Wysiwyg from './flexible/Wysiwyg';
 
 interface FlexibleProps {
     flexible: any;
@@ -15,14 +16,20 @@ const Flexible = ({ flexible }: FlexibleProps) => {
             : null;
 
         switch (partialName) {
-            case "spacer":
+            case 'spacer':
                 partials.push(
                     <Spacer key={index} fields={flex?.[partialName]} />
                 );
                 return;
-            case "wysiwyg":
+            case 'wysiwyg':
                 partials.push(
                     <Wysiwyg key={index} fields={flex?.[partialName]} />
+                );
+                return;
+
+            case 'form':
+                partials.push(
+                    <Form key={index} fields={flex?.[partialName]} />
                 );
                 return;
 
