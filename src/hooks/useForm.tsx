@@ -25,7 +25,6 @@ interface FormProps {
 export const FormContext = createContext(null);
 
 export const FormContextProvider = ({ children, value }) => {
-    console.log(value);
     return (
         <FormContext.Provider value={value}>{children}</FormContext.Provider>
     );

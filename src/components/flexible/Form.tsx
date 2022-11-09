@@ -11,7 +11,7 @@ const Form = ({ fields }: FormProps) => {
     const form = getFormById(fields.formId);
 
     return (
-        <section className={`max-w-3xl container`}>
+        <section className={`max-w-3xl container mb-8`}>
             <Form gfForm={form} />
         </section>
     );

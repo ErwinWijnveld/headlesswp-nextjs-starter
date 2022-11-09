@@ -166,14 +166,14 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] Persist next styles thru page transition
 -   [x] Preview custom post type project
 -   [x] Blockquote styling
+-   [x] GravityForms support
+-   [ ] GravityForms component fix rerender component captcha
 -   [ ] Standard header search bar integration with @docsearch/react
 -   [ ] Change layout of standard posts
 -   [ ] Back button single project
 -   [ ] Redirect wp-admin to admin
 -   [ ] Footer acf presets
 -   [ ] Use nodes instead of edges.nodes in standard posts
--   [ ] WP Menu support
--   [ ] GravityForms support
 -   [ ] Login and register pages
 -   [ ] Authenticated routes
 -   [ ] Woocommerce integration
