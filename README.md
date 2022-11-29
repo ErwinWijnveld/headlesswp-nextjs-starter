@@ -167,6 +167,7 @@ You should now be able to see this post. To exit Preview Mode, you can click on 
 -   [x] Preview custom post type project
 -   [x] Blockquote styling
 -   [x] GravityForms support
+-   [ ] Install next-sitemap
 -   [ ] GravityForms component fix rerender component captcha
 -   [ ] Standard header search bar integration with @docsearch/react
 -   [ ] Change layout of standard posts
